@@ -73,7 +73,7 @@ python download_data.py --slices 2200
 > **Using your own Kaggle account:**
 > 1. Download `kaggle.json` from [Kaggle Account Settings](https://www.kaggle.com/settings).
 > 2. Save it to `~/.kaggle/kaggle.json` (Windows: `C:\Users\<Username>\.kaggle\kaggle.json`).
-> 3. Run `python download_data.py --dataset mrinmoves/cirrmri600`.
+> 3. Run `python download_data.py --dataset anhoangvo/chaos-t1-and-t2` (or `andrewmvd/lits-png`).
 
 ### 4. Model Training & Serialization (Pickle .pkl)
 The trained model is serialized into standard Python pickle format (`model/best_model.pkl` and `model/unet_model.pkl`) to prevent redundant re-training:

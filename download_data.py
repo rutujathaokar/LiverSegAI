@@ -40,7 +40,7 @@ def check_kaggle_credentials():
     return kaggle_json.exists() or (bool(env_user) and bool(env_key))
 
 
-def try_kaggle_download(dataset_slug="mrinmoves/cirrmri600"):
+def try_kaggle_download(dataset_slug="anhoangvo/chaos-t1-and-t2"):
     """
     Attempts to download a Kaggle dataset using the Kaggle API.
     Returns True if successful, False otherwise.
@@ -426,7 +426,7 @@ def build_mri_dataset(num_slices=TOTAL_SLICES, output_dir=PROCESSED_DIR):
 def main():
     parser = argparse.ArgumentParser(description="Download and preprocess Liver MRI Dataset.")
     parser.add_argument("--slices", type=int, default=TOTAL_SLICES, help="Total number of slices (min 2000)")
-    parser.add_argument("--dataset", type=str, default="mrinmoves/cirrmri600", help="Kaggle dataset slug")
+    parser.add_argument("--dataset", type=str, default="anhoangvo/chaos-t1-and-t2", help="Kaggle dataset slug")
     parser.add_argument("--force-generate", action="store_true", help="Force synthetic abdominal MRI generation")
     args = parser.parse_args()
 
