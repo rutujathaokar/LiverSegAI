@@ -29,9 +29,6 @@ from model.unet import UNet
 from model.metrics import compute_all_metrics, dice_coef, iou_score
 from model.tumor_classifier import extract_morphological_features, classify_tumor_features, DISCLAIMER_TEXT
 
-app = Flask(__name__, static_folder="static", template_folder="templates")
-CORS(app)
-
 BASE_DIR = Path(__file__).resolve().parent
 DATA_DIR = BASE_DIR / "data" / "processed"
 MODEL_DIR = BASE_DIR / "model"
@@ -39,6 +36,13 @@ BEST_MODEL_PKL = MODEL_DIR / "best_model.pkl"
 UNET_MODEL_PKL = MODEL_DIR / "unet_model.pkl"
 BEST_MODEL_PTH = MODEL_DIR / "best_model.pth"
 BEST_MODEL_PATH = BEST_MODEL_PKL if BEST_MODEL_PKL.exists() else BEST_MODEL_PTH
+
+app = Flask(
+    __name__,
+    static_folder=str(BASE_DIR / "static"),
+    template_folder=str(BASE_DIR / "templates")
+)
+CORS(app)
 
 # Global model holder
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")

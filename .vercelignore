@@ -1,0 +1,22 @@
+# Exclude version control and development assets
+.git
+.github
+*.pyc
+__pycache__
+.venv
+venv
+
+# Exclude heavy training datasets (not needed by live inference server)
+data/raw
+data/processed/train
+data/processed/val
+
+# Exclude offline training and evaluation scripts
+train.py
+download_data.py
+evaluate.py
+export_pickle.py
+requirements-dev.txt
+
+# Exclude duplicate models (best_model.pkl is used)
+model/final_model.pth
