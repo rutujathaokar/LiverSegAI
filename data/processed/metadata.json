@@ -1,0 +1,919 @@
+{
+  "total_slices": 2200,
+  "train_slices": 1760,
+  "val_slices": 220,
+  "test_slices": 220,
+  "benign_slices": 990,
+  "malignant_slices": 990,
+  "normal_slices": 220,
+  "resolution": "256x256",
+  "channels": 1,
+  "normalization": "[0.0, 1.0]",
+  "mask_binarization": "0 or 255 (threshold at 0.5)",
+  "source": "CirrMRI600+ / High-Fidelity Abdominal MRI Protocol",
+  "slices_summary": {
+    "empty_mask_percentage": 10.0,
+    "samples_list": [
+      {
+        "id": "mri_slice_00000",
+        "split": "train",
+        "type": "benign",
+        "empty_mask": false,
+        "lesion_pixels": 301,
+        "image_file": "train\\images\\mri_slice_00000.png",
+        "mask_file": "train\\masks\\mri_slice_00000.png"
+      },
+      {
+        "id": "mri_slice_00001",
+        "split": "train",
+        "type": "benign",
+        "empty_mask": false,
+        "lesion_pixels": 216,
+        "image_file": "train\\images\\mri_slice_00001.png",
+        "mask_file": "train\\masks\\mri_slice_00001.png"
+      },
+      {
+        "id": "mri_slice_00002",
+        "split": "train",
+        "type": "benign",
+        "empty_mask": false,
+        "lesion_pixels": 489,
+        "image_file": "train\\images\\mri_slice_00002.png",
+        "mask_file": "train\\masks\\mri_slice_00002.png"
+      },
+      {
+        "id": "mri_slice_00003",
+        "split": "train",
+        "type": "benign",
+        "empty_mask": false,
+        "lesion_pixels": 188,
+        "image_file": "train\\images\\mri_slice_00003.png",
+        "mask_file": "train\\masks\\mri_slice_00003.png"
+      },
+      {
+        "id": "mri_slice_00004",
+        "split": "train",
+        "type": "benign",
+        "empty_mask": false,
+        "lesion_pixels": 438,
+        "image_file": "train\\images\\mri_slice_00004.png",
+        "mask_file": "train\\masks\\mri_slice_00004.png"
+      },
+      {
+        "id": "mri_slice_00005",
+        "split": "train",
+        "type": "malignant",
+        "empty_mask": false,
+        "lesion_pixels": 858,
+        "image_file": "train\\images\\mri_slice_00005.png",
+        "mask_file": "train\\masks\\mri_slice_00005.png"
+      },
+      {
+        "id": "mri_slice_00006",
+        "split": "train",
+        "type": "malignant",
+        "empty_mask": false,
+        "lesion_pixels": 1208,
+        "image_file": "train\\images\\mri_slice_00006.png",
+        "mask_file": "train\\masks\\mri_slice_00006.png"
+      },
+      {
+        "id": "mri_slice_00007",
+        "split": "train",
+        "type": "benign",
+        "empty_mask": false,
+        "lesion_pixels": 312,
+        "image_file": "train\\images\\mri_slice_00007.png",
+        "mask_file": "train\\masks\\mri_slice_00007.png"
+      },
+      {
+        "id": "mri_slice_00008",
+        "split": "train",
+        "type": "benign",
+        "empty_mask": false,
+        "lesion_pixels": 599,
+        "image_file": "train\\images\\mri_slice_00008.png",
+        "mask_file": "train\\masks\\mri_slice_00008.png"
+      },
+      {
+        "id": "mri_slice_00009",
+        "split": "train",
+        "type": "benign",
+        "empty_mask": false,
+        "lesion_pixels": 309,
+        "image_file": "train\\images\\mri_slice_00009.png",
+        "mask_file": "train\\masks\\mri_slice_00009.png"
+      },
+      {
+        "id": "mri_slice_00010",
+        "split": "train",
+        "type": "malignant",
+        "empty_mask": false,
+        "lesion_pixels": 2042,
+        "image_file": "train\\images\\mri_slice_00010.png",
+        "mask_file": "train\\masks\\mri_slice_00010.png"
+      },
+      {
+        "id": "mri_slice_00011",
+        "split": "train",
+        "type": "malignant",
+        "empty_mask": false,
+        "lesion_pixels": 785,
+        "image_file": "train\\images\\mri_slice_00011.png",
+        "mask_file": "train\\masks\\mri_slice_00011.png"
+      },
+      {
+        "id": "mri_slice_00012",
+        "split": "train",
+        "type": "benign",
+        "empty_mask": false,
+        "lesion_pixels": 333,
+        "image_file": "train\\images\\mri_slice_00012.png",
+        "mask_file": "train\\masks\\mri_slice_00012.png"
+      },
+      {
+        "id": "mri_slice_00013",
+        "split": "train",
+        "type": "normal",
+        "empty_mask": true,
+        "lesion_pixels": 0,
+        "image_file": "train\\images\\mri_slice_00013.png",
+        "mask_file": "train\\masks\\mri_slice_00013.png"
+      },
+      {
+        "id": "mri_slice_00014",
+        "split": "train",
+        "type": "malignant",
+        "empty_mask": false,
+        "lesion_pixels": 1122,
+        "image_file": "train\\images\\mri_slice_00014.png",
+        "mask_file": "train\\masks\\mri_slice_00014.png"
+      },
+      {
+        "id": "mri_slice_00015",
+        "split": "train",
+        "type": "malignant",
+        "empty_mask": false,
+        "lesion_pixels": 837,
+        "image_file": "train\\images\\mri_slice_00015.png",
+        "mask_file": "train\\masks\\mri_slice_00015.png"
+      },
+      {
+        "id": "mri_slice_00016",
+        "split": "train",
+        "type": "malignant",
+        "empty_mask": false,
+        "lesion_pixels": 1284,
+        "image_file": "train\\images\\mri_slice_00016.png",
+        "mask_file": "train\\masks\\mri_slice_00016.png"
+      },
+      {
+        "id": "mri_slice_00017",
+        "split": "train",
+        "type": "benign",
+        "empty_mask": false,
+        "lesion_pixels": 274,
+        "image_file": "train\\images\\mri_slice_00017.png",
+        "mask_file": "train\\masks\\mri_slice_00017.png"
+      },
+      {
+        "id": "mri_slice_00018",
+        "split": "train",
+        "type": "malignant",
+        "empty_mask": false,
+        "lesion_pixels": 1364,
+        "image_file": "train\\images\\mri_slice_00018.png",
+        "mask_file": "train\\masks\\mri_slice_00018.png"
+      },
+      {
+        "id": "mri_slice_00019",
+        "split": "train",
+        "type": "malignant",
+        "empty_mask": false,
+        "lesion_pixels": 1268,
+        "image_file": "train\\images\\mri_slice_00019.png",
+        "mask_file": "train\\masks\\mri_slice_00019.png"
+      },
+      {
+        "id": "mri_slice_00020",
+        "split": "train",
+        "type": "benign",
+        "empty_mask": false,
+        "lesion_pixels": 776,
+        "image_file": "train\\images\\mri_slice_00020.png",
+        "mask_file": "train\\masks\\mri_slice_00020.png"
+      },
+      {
+        "id": "mri_slice_00021",
+        "split": "train",
+        "type": "malignant",
+        "empty_mask": false,
+        "lesion_pixels": 1347,
+        "image_file": "train\\images\\mri_slice_00021.png",
+        "mask_file": "train\\masks\\mri_slice_00021.png"
+      },
+      {
+        "id": "mri_slice_00022",
+        "split": "train",
+        "type": "benign",
+        "empty_mask": false,
+        "lesion_pixels": 517,
+        "image_file": "train\\images\\mri_slice_00022.png",
+        "mask_file": "train\\masks\\mri_slice_00022.png"
+      },
+      {
+        "id": "mri_slice_00023",
+        "split": "train",
+        "type": "malignant",
+        "empty_mask": false,
+        "lesion_pixels": 1781,
+        "image_file": "train\\images\\mri_slice_00023.png",
+        "mask_file": "train\\masks\\mri_slice_00023.png"
+      },
+      {
+        "id": "mri_slice_00024",
+        "split": "train",
+        "type": "benign",
+        "empty_mask": false,
+        "lesion_pixels": 151,
+        "image_file": "train\\images\\mri_slice_00024.png",
+        "mask_file": "train\\masks\\mri_slice_00024.png"
+      },
+      {
+        "id": "mri_slice_00025",
+        "split": "train",
+        "type": "malignant",
+        "empty_mask": false,
+        "lesion_pixels": 896,
+        "image_file": "train\\images\\mri_slice_00025.png",
+        "mask_file": "train\\masks\\mri_slice_00025.png"
+      },
+      {
+        "id": "mri_slice_00026",
+        "split": "train",
+        "type": "benign",
+        "empty_mask": false,
+        "lesion_pixels": 774,
+        "image_file": "train\\images\\mri_slice_00026.png",
+        "mask_file": "train\\masks\\mri_slice_00026.png"
+      },
+      {
+        "id": "mri_slice_00027",
+        "split": "train",
+        "type": "benign",
+        "empty_mask": false,
+        "lesion_pixels": 489,
+        "image_file": "train\\images\\mri_slice_00027.png",
+        "mask_file": "train\\masks\\mri_slice_00027.png"
+      },
+      {
+        "id": "mri_slice_00028",
+        "split": "train",
+        "type": "malignant",
+        "empty_mask": false,
+        "lesion_pixels": 868,
+        "image_file": "train\\images\\mri_slice_00028.png",
+        "mask_file": "train\\masks\\mri_slice_00028.png"
+      },
+      {
+        "id": "mri_slice_00029",
+        "split": "train",
+        "type": "malignant",
+        "empty_mask": false,
+        "lesion_pixels": 1194,
+        "image_file": "train\\images\\mri_slice_00029.png",
+        "mask_file": "train\\masks\\mri_slice_00029.png"
+      },
+      {
+        "id": "mri_slice_00030",
+        "split": "train",
+        "type": "benign",
+        "empty_mask": false,
+        "lesion_pixels": 187,
+        "image_file": "train\\images\\mri_slice_00030.png",
+        "mask_file": "train\\masks\\mri_slice_00030.png"
+      },
+      {
+        "id": "mri_slice_00031",
+        "split": "train",
+        "type": "normal",
+        "empty_mask": true,
+        "lesion_pixels": 0,
+        "image_file": "train\\images\\mri_slice_00031.png",
+        "mask_file": "train\\masks\\mri_slice_00031.png"
+      },
+      {
+        "id": "mri_slice_00032",
+        "split": "train",
+        "type": "benign",
+        "empty_mask": false,
+        "lesion_pixels": 549,
+        "image_file": "train\\images\\mri_slice_00032.png",
+        "mask_file": "train\\masks\\mri_slice_00032.png"
+      },
+      {
+        "id": "mri_slice_00033",
+        "split": "train",
+        "type": "malignant",
+        "empty_mask": false,
+        "lesion_pixels": 1202,
+        "image_file": "train\\images\\mri_slice_00033.png",
+        "mask_file": "train\\masks\\mri_slice_00033.png"
+      },
+      {
+        "id": "mri_slice_00034",
+        "split": "train",
+        "type": "benign",
+        "empty_mask": false,
+        "lesion_pixels": 281,
+        "image_file": "train\\images\\mri_slice_00034.png",
+        "mask_file": "train\\masks\\mri_slice_00034.png"
+      },
+      {
+        "id": "mri_slice_00035",
+        "split": "train",
+        "type": "malignant",
+        "empty_mask": false,
+        "lesion_pixels": 1229,
+        "image_file": "train\\images\\mri_slice_00035.png",
+        "mask_file": "train\\masks\\mri_slice_00035.png"
+      },
+      {
+        "id": "mri_slice_00036",
+        "split": "train",
+        "type": "benign",
+        "empty_mask": false,
+        "lesion_pixels": 520,
+        "image_file": "train\\images\\mri_slice_00036.png",
+        "mask_file": "train\\masks\\mri_slice_00036.png"
+      },
+      {
+        "id": "mri_slice_00037",
+        "split": "train",
+        "type": "benign",
+        "empty_mask": false,
+        "lesion_pixels": 215,
+        "image_file": "train\\images\\mri_slice_00037.png",
+        "mask_file": "train\\masks\\mri_slice_00037.png"
+      },
+      {
+        "id": "mri_slice_00038",
+        "split": "train",
+        "type": "malignant",
+        "empty_mask": false,
+        "lesion_pixels": 851,
+        "image_file": "train\\images\\mri_slice_00038.png",
+        "mask_file": "train\\masks\\mri_slice_00038.png"
+      },
+      {
+        "id": "mri_slice_00039",
+        "split": "train",
+        "type": "normal",
+        "empty_mask": true,
+        "lesion_pixels": 0,
+        "image_file": "train\\images\\mri_slice_00039.png",
+        "mask_file": "train\\masks\\mri_slice_00039.png"
+      },
+      {
+        "id": "mri_slice_00040",
+        "split": "train",
+        "type": "benign",
+        "empty_mask": false,
+        "lesion_pixels": 343,
+        "image_file": "train\\images\\mri_slice_00040.png",
+        "mask_file": "train\\masks\\mri_slice_00040.png"
+      },
+      {
+        "id": "mri_slice_00041",
+        "split": "train",
+        "type": "malignant",
+        "empty_mask": false,
+        "lesion_pixels": 1458,
+        "image_file": "train\\images\\mri_slice_00041.png",
+        "mask_file": "train\\masks\\mri_slice_00041.png"
+      },
+      {
+        "id": "mri_slice_00042",
+        "split": "train",
+        "type": "normal",
+        "empty_mask": true,
+        "lesion_pixels": 0,
+        "image_file": "train\\images\\mri_slice_00042.png",
+        "mask_file": "train\\masks\\mri_slice_00042.png"
+      },
+      {
+        "id": "mri_slice_00043",
+        "split": "train",
+        "type": "benign",
+        "empty_mask": false,
+        "lesion_pixels": 407,
+        "image_file": "train\\images\\mri_slice_00043.png",
+        "mask_file": "train\\masks\\mri_slice_00043.png"
+      },
+      {
+        "id": "mri_slice_00044",
+        "split": "train",
+        "type": "benign",
+        "empty_mask": false,
+        "lesion_pixels": 527,
+        "image_file": "train\\images\\mri_slice_00044.png",
+        "mask_file": "train\\masks\\mri_slice_00044.png"
+      },
+      {
+        "id": "mri_slice_00045",
+        "split": "train",
+        "type": "malignant",
+        "empty_mask": false,
+        "lesion_pixels": 1655,
+        "image_file": "train\\images\\mri_slice_00045.png",
+        "mask_file": "train\\masks\\mri_slice_00045.png"
+      },
+      {
+        "id": "mri_slice_00046",
+        "split": "train",
+        "type": "malignant",
+        "empty_mask": false,
+        "lesion_pixels": 857,
+        "image_file": "train\\images\\mri_slice_00046.png",
+        "mask_file": "train\\masks\\mri_slice_00046.png"
+      },
+      {
+        "id": "mri_slice_00047",
+        "split": "train",
+        "type": "malignant",
+        "empty_mask": false,
+        "lesion_pixels": 765,
+        "image_file": "train\\images\\mri_slice_00047.png",
+        "mask_file": "train\\masks\\mri_slice_00047.png"
+      },
+      {
+        "id": "mri_slice_00048",
+        "split": "train",
+        "type": "benign",
+        "empty_mask": false,
+        "lesion_pixels": 372,
+        "image_file": "train\\images\\mri_slice_00048.png",
+        "mask_file": "train\\masks\\mri_slice_00048.png"
+      },
+      {
+        "id": "mri_slice_00049",
+        "split": "train",
+        "type": "benign",
+        "empty_mask": false,
+        "lesion_pixels": 519,
+        "image_file": "train\\images\\mri_slice_00049.png",
+        "mask_file": "train\\masks\\mri_slice_00049.png"
+      },
+      {
+        "id": "mri_slice_00050",
+        "split": "train",
+        "type": "benign",
+        "empty_mask": false,
+        "lesion_pixels": 220,
+        "image_file": "train\\images\\mri_slice_00050.png",
+        "mask_file": "train\\masks\\mri_slice_00050.png"
+      },
+      {
+        "id": "mri_slice_00051",
+        "split": "train",
+        "type": "malignant",
+        "empty_mask": false,
+        "lesion_pixels": 901,
+        "image_file": "train\\images\\mri_slice_00051.png",
+        "mask_file": "train\\masks\\mri_slice_00051.png"
+      },
+      {
+        "id": "mri_slice_00052",
+        "split": "train",
+        "type": "malignant",
+        "empty_mask": false,
+        "lesion_pixels": 908,
+        "image_file": "train\\images\\mri_slice_00052.png",
+        "mask_file": "train\\masks\\mri_slice_00052.png"
+      },
+      {
+        "id": "mri_slice_00053",
+        "split": "train",
+        "type": "benign",
+        "empty_mask": false,
+        "lesion_pixels": 552,
+        "image_file": "train\\images\\mri_slice_00053.png",
+        "mask_file": "train\\masks\\mri_slice_00053.png"
+      },
+      {
+        "id": "mri_slice_00054",
+        "split": "train",
+        "type": "benign",
+        "empty_mask": false,
+        "lesion_pixels": 311,
+        "image_file": "train\\images\\mri_slice_00054.png",
+        "mask_file": "train\\masks\\mri_slice_00054.png"
+      },
+      {
+        "id": "mri_slice_00055",
+        "split": "train",
+        "type": "normal",
+        "empty_mask": true,
+        "lesion_pixels": 0,
+        "image_file": "train\\images\\mri_slice_00055.png",
+        "mask_file": "train\\masks\\mri_slice_00055.png"
+      },
+      {
+        "id": "mri_slice_00056",
+        "split": "train",
+        "type": "malignant",
+        "empty_mask": false,
+        "lesion_pixels": 1458,
+        "image_file": "train\\images\\mri_slice_00056.png",
+        "mask_file": "train\\masks\\mri_slice_00056.png"
+      },
+      {
+        "id": "mri_slice_00057",
+        "split": "train",
+        "type": "benign",
+        "empty_mask": false,
+        "lesion_pixels": 250,
+        "image_file": "train\\images\\mri_slice_00057.png",
+        "mask_file": "train\\masks\\mri_slice_00057.png"
+      },
+      {
+        "id": "mri_slice_00058",
+        "split": "train",
+        "type": "benign",
+        "empty_mask": false,
+        "lesion_pixels": 404,
+        "image_file": "train\\images\\mri_slice_00058.png",
+        "mask_file": "train\\masks\\mri_slice_00058.png"
+      },
+      {
+        "id": "mri_slice_00059",
+        "split": "train",
+        "type": "benign",
+        "empty_mask": false,
+        "lesion_pixels": 609,
+        "image_file": "train\\images\\mri_slice_00059.png",
+        "mask_file": "train\\masks\\mri_slice_00059.png"
+      },
+      {
+        "id": "mri_slice_00060",
+        "split": "train",
+        "type": "normal",
+        "empty_mask": true,
+        "lesion_pixels": 0,
+        "image_file": "train\\images\\mri_slice_00060.png",
+        "mask_file": "train\\masks\\mri_slice_00060.png"
+      },
+      {
+        "id": "mri_slice_00061",
+        "split": "train",
+        "type": "malignant",
+        "empty_mask": false,
+        "lesion_pixels": 594,
+        "image_file": "train\\images\\mri_slice_00061.png",
+        "mask_file": "train\\masks\\mri_slice_00061.png"
+      },
+      {
+        "id": "mri_slice_00062",
+        "split": "train",
+        "type": "benign",
+        "empty_mask": false,
+        "lesion_pixels": 705,
+        "image_file": "train\\images\\mri_slice_00062.png",
+        "mask_file": "train\\masks\\mri_slice_00062.png"
+      },
+      {
+        "id": "mri_slice_00063",
+        "split": "train",
+        "type": "normal",
+        "empty_mask": true,
+        "lesion_pixels": 0,
+        "image_file": "train\\images\\mri_slice_00063.png",
+        "mask_file": "train\\masks\\mri_slice_00063.png"
+      },
+      {
+        "id": "mri_slice_00064",
+        "split": "train",
+        "type": "benign",
+        "empty_mask": false,
+        "lesion_pixels": 473,
+        "image_file": "train\\images\\mri_slice_00064.png",
+        "mask_file": "train\\masks\\mri_slice_00064.png"
+      },
+      {
+        "id": "mri_slice_00065",
+        "split": "train",
+        "type": "malignant",
+        "empty_mask": false,
+        "lesion_pixels": 1100,
+        "image_file": "train\\images\\mri_slice_00065.png",
+        "mask_file": "train\\masks\\mri_slice_00065.png"
+      },
+      {
+        "id": "mri_slice_00066",
+        "split": "train",
+        "type": "malignant",
+        "empty_mask": false,
+        "lesion_pixels": 1843,
+        "image_file": "train\\images\\mri_slice_00066.png",
+        "mask_file": "train\\masks\\mri_slice_00066.png"
+      },
+      {
+        "id": "mri_slice_00067",
+        "split": "train",
+        "type": "malignant",
+        "empty_mask": false,
+        "lesion_pixels": 1046,
+        "image_file": "train\\images\\mri_slice_00067.png",
+        "mask_file": "train\\masks\\mri_slice_00067.png"
+      },
+      {
+        "id": "mri_slice_00068",
+        "split": "train",
+        "type": "benign",
+        "empty_mask": false,
+        "lesion_pixels": 462,
+        "image_file": "train\\images\\mri_slice_00068.png",
+        "mask_file": "train\\masks\\mri_slice_00068.png"
+      },
+      {
+        "id": "mri_slice_00069",
+        "split": "train",
+        "type": "malignant",
+        "empty_mask": false,
+        "lesion_pixels": 1326,
+        "image_file": "train\\images\\mri_slice_00069.png",
+        "mask_file": "train\\masks\\mri_slice_00069.png"
+      },
+      {
+        "id": "mri_slice_00070",
+        "split": "train",
+        "type": "malignant",
+        "empty_mask": false,
+        "lesion_pixels": 1034,
+        "image_file": "train\\images\\mri_slice_00070.png",
+        "mask_file": "train\\masks\\mri_slice_00070.png"
+      },
+      {
+        "id": "mri_slice_00071",
+        "split": "train",
+        "type": "benign",
+        "empty_mask": false,
+        "lesion_pixels": 251,
+        "image_file": "train\\images\\mri_slice_00071.png",
+        "mask_file": "train\\masks\\mri_slice_00071.png"
+      },
+      {
+        "id": "mri_slice_00072",
+        "split": "train",
+        "type": "malignant",
+        "empty_mask": false,
+        "lesion_pixels": 1531,
+        "image_file": "train\\images\\mri_slice_00072.png",
+        "mask_file": "train\\masks\\mri_slice_00072.png"
+      },
+      {
+        "id": "mri_slice_00073",
+        "split": "train",
+        "type": "malignant",
+        "empty_mask": false,
+        "lesion_pixels": 1625,
+        "image_file": "train\\images\\mri_slice_00073.png",
+        "mask_file": "train\\masks\\mri_slice_00073.png"
+      },
+      {
+        "id": "mri_slice_00074",
+        "split": "train",
+        "type": "malignant",
+        "empty_mask": false,
+        "lesion_pixels": 1522,
+        "image_file": "train\\images\\mri_slice_00074.png",
+        "mask_file": "train\\masks\\mri_slice_00074.png"
+      },
+      {
+        "id": "mri_slice_00075",
+        "split": "train",
+        "type": "benign",
+        "empty_mask": false,
+        "lesion_pixels": 700,
+        "image_file": "train\\images\\mri_slice_00075.png",
+        "mask_file": "train\\masks\\mri_slice_00075.png"
+      },
+      {
+        "id": "mri_slice_00076",
+        "split": "train",
+        "type": "malignant",
+        "empty_mask": false,
+        "lesion_pixels": 1706,
+        "image_file": "train\\images\\mri_slice_00076.png",
+        "mask_file": "train\\masks\\mri_slice_00076.png"
+      },
+      {
+        "id": "mri_slice_00077",
+        "split": "train",
+        "type": "benign",
+        "empty_mask": false,
+        "lesion_pixels": 448,
+        "image_file": "train\\images\\mri_slice_00077.png",
+        "mask_file": "train\\masks\\mri_slice_00077.png"
+      },
+      {
+        "id": "mri_slice_00078",
+        "split": "train",
+        "type": "benign",
+        "empty_mask": false,
+        "lesion_pixels": 519,
+        "image_file": "train\\images\\mri_slice_00078.png",
+        "mask_file": "train\\masks\\mri_slice_00078.png"
+      },
+      {
+        "id": "mri_slice_00079",
+        "split": "train",
+        "type": "benign",
+        "empty_mask": false,
+        "lesion_pixels": 481,
+        "image_file": "train\\images\\mri_slice_00079.png",
+        "mask_file": "train\\masks\\mri_slice_00079.png"
+      },
+      {
+        "id": "mri_slice_00080",
+        "split": "train",
+        "type": "malignant",
+        "empty_mask": false,
+        "lesion_pixels": 1086,
+        "image_file": "train\\images\\mri_slice_00080.png",
+        "mask_file": "train\\masks\\mri_slice_00080.png"
+      },
+      {
+        "id": "mri_slice_00081",
+        "split": "train",
+        "type": "benign",
+        "empty_mask": false,
+        "lesion_pixels": 282,
+        "image_file": "train\\images\\mri_slice_00081.png",
+        "mask_file": "train\\masks\\mri_slice_00081.png"
+      },
+      {
+        "id": "mri_slice_00082",
+        "split": "train",
+        "type": "normal",
+        "empty_mask": true,
+        "lesion_pixels": 0,
+        "image_file": "train\\images\\mri_slice_00082.png",
+        "mask_file": "train\\masks\\mri_slice_00082.png"
+      },
+      {
+        "id": "mri_slice_00083",
+        "split": "train",
+        "type": "normal",
+        "empty_mask": true,
+        "lesion_pixels": 0,
+        "image_file": "train\\images\\mri_slice_00083.png",
+        "mask_file": "train\\masks\\mri_slice_00083.png"
+      },
+      {
+        "id": "mri_slice_00084",
+        "split": "train",
+        "type": "benign",
+        "empty_mask": false,
+        "lesion_pixels": 247,
+        "image_file": "train\\images\\mri_slice_00084.png",
+        "mask_file": "train\\masks\\mri_slice_00084.png"
+      },
+      {
+        "id": "mri_slice_00085",
+        "split": "train",
+        "type": "malignant",
+        "empty_mask": false,
+        "lesion_pixels": 1523,
+        "image_file": "train\\images\\mri_slice_00085.png",
+        "mask_file": "train\\masks\\mri_slice_00085.png"
+      },
+      {
+        "id": "mri_slice_00086",
+        "split": "train",
+        "type": "malignant",
+        "empty_mask": false,
+        "lesion_pixels": 1297,
+        "image_file": "train\\images\\mri_slice_00086.png",
+        "mask_file": "train\\masks\\mri_slice_00086.png"
+      },
+      {
+        "id": "mri_slice_00087",
+        "split": "train",
+        "type": "benign",
+        "empty_mask": false,
+        "lesion_pixels": 603,
+        "image_file": "train\\images\\mri_slice_00087.png",
+        "mask_file": "train\\masks\\mri_slice_00087.png"
+      },
+      {
+        "id": "mri_slice_00088",
+        "split": "train",
+        "type": "benign",
+        "empty_mask": false,
+        "lesion_pixels": 304,
+        "image_file": "train\\images\\mri_slice_00088.png",
+        "mask_file": "train\\masks\\mri_slice_00088.png"
+      },
+      {
+        "id": "mri_slice_00089",
+        "split": "train",
+        "type": "benign",
+        "empty_mask": false,
+        "lesion_pixels": 413,
+        "image_file": "train\\images\\mri_slice_00089.png",
+        "mask_file": "train\\masks\\mri_slice_00089.png"
+      },
+      {
+        "id": "mri_slice_00090",
+        "split": "train",
+        "type": "benign",
+        "empty_mask": false,
+        "lesion_pixels": 215,
+        "image_file": "train\\images\\mri_slice_00090.png",
+        "mask_file": "train\\masks\\mri_slice_00090.png"
+      },
+      {
+        "id": "mri_slice_00091",
+        "split": "train",
+        "type": "benign",
+        "empty_mask": false,
+        "lesion_pixels": 310,
+        "image_file": "train\\images\\mri_slice_00091.png",
+        "mask_file": "train\\masks\\mri_slice_00091.png"
+      },
+      {
+        "id": "mri_slice_00092",
+        "split": "train",
+        "type": "benign",
+        "empty_mask": false,
+        "lesion_pixels": 191,
+        "image_file": "train\\images\\mri_slice_00092.png",
+        "mask_file": "train\\masks\\mri_slice_00092.png"
+      },
+      {
+        "id": "mri_slice_00093",
+        "split": "train",
+        "type": "malignant",
+        "empty_mask": false,
+        "lesion_pixels": 868,
+        "image_file": "train\\images\\mri_slice_00093.png",
+        "mask_file": "train\\masks\\mri_slice_00093.png"
+      },
+      {
+        "id": "mri_slice_00094",
+        "split": "train",
+        "type": "benign",
+        "empty_mask": false,
+        "lesion_pixels": 589,
+        "image_file": "train\\images\\mri_slice_00094.png",
+        "mask_file": "train\\masks\\mri_slice_00094.png"
+      },
+      {
+        "id": "mri_slice_00095",
+        "split": "train",
+        "type": "malignant",
+        "empty_mask": false,
+        "lesion_pixels": 861,
+        "image_file": "train\\images\\mri_slice_00095.png",
+        "mask_file": "train\\masks\\mri_slice_00095.png"
+      },
+      {
+        "id": "mri_slice_00096",
+        "split": "train",
+        "type": "normal",
+        "empty_mask": true,
+        "lesion_pixels": 0,
+        "image_file": "train\\images\\mri_slice_00096.png",
+        "mask_file": "train\\masks\\mri_slice_00096.png"
+      },
+      {
+        "id": "mri_slice_00097",
+        "split": "train",
+        "type": "benign",
+        "empty_mask": false,
+        "lesion_pixels": 543,
+        "image_file": "train\\images\\mri_slice_00097.png",
+        "mask_file": "train\\masks\\mri_slice_00097.png"
+      },
+      {
+        "id": "mri_slice_00098",
+        "split": "train",
+        "type": "malignant",
+        "empty_mask": false,
+        "lesion_pixels": 2358,
+        "image_file": "train\\images\\mri_slice_00098.png",
+        "mask_file": "train\\masks\\mri_slice_00098.png"
+      },
+      {
+        "id": "mri_slice_00099",
+        "split": "train",
+        "type": "malignant",
+        "empty_mask": false,
+        "lesion_pixels": 1603,
+        "image_file": "train\\images\\mri_slice_00099.png",
+        "mask_file": "train\\masks\\mri_slice_00099.png"
+      }
+    ]
+  }
+}

@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LiverSeg AI - Liver Disease Segmentation from MRI using UNet</title>
+  
+  <!-- Google Font: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+  <!-- Application Stylesheet -->
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+<div class="app-container">
+  
+  <!-- Dark Medical Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <a href="#" class="brand" onclick="switchView('dashboard')">
+        <div class="brand-icon">
+          <i class="fa-solid fa-heart-pulse"></i>
+        </div>
+        <div>
+          <div class="brand-title">LiverSeg AI</div>
+          <div class="brand-subtitle">Clinical MRI System</div>
+        </div>
+      </a>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-item active" id="nav-dashboard" onclick="switchView('dashboard')">
+        <i class="fa-solid fa-chart-line"></i>
+        <span>Dashboard</span>
+      </div>
+      <div class="nav-item" id="nav-predict" onclick="switchView('predict')">
+        <i class="fa-solid fa-microscope"></i>
+        <span>Predict & Analyze</span>
+      </div>
+      <div class="nav-item" id="nav-results" onclick="switchView('results')">
+        <i class="fa-solid fa-clipboard-check"></i>
+        <span>Diagnostic Results</span>
+      </div>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="model-chip">
+        <div class="status-dot"></div>
+        <div>
+          <div class="model-chip-title">UNet Engine Online</div>
+          <div class="model-chip-sub">BCE + Dice Loss (256x256)</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Content Space -->
+  <main class="main-content">
+    
+    <!-- Topbar Navigation -->
+    <header class="topbar">
+      <div class="topbar-title">
+        <i class="fa-solid fa-brain" style="color: var(--primary);"></i>
+        <span>Liver Disease Segmentation from MRI using UNet</span>
+      </div>
+      <div class="topbar-actions">
+        <div class="time-chip">
+          <i class="fa-regular fa-clock"></i>
+          <span id="live-clock">--:--:--</span>
+        </div>
+        <div class="live-badge">
+          <i class="fa-solid fa-circle-check"></i>
+          <span>Model Ready</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Page Scroll View -->
+    <div class="page-container">
+      
+      <!-- ========================================== -->
+      <!-- VIEW 1: DASHBOARD                          -->
+      <!-- ========================================== -->
+      <section id="view-dashboard" class="view-section active">
+        <div class="section-header">
+          <h1 class="section-title">Clinical Performance Dashboard</h1>
+          <p class="section-desc">Real-time model performance metrics evaluated across test slices and training history.</p>
+        </div>
+
+        <!-- KPI Grid -->
+        <div class="kpi-grid">
+          <!-- Dice Score -->
+          <div class="kpi-card">
+            <div class="kpi-top">
+              <span class="kpi-label">Dice Score (DSC)</span>
+              <div class="kpi-icon-wrap kpi-icon-emerald">
+                <i class="fa-solid fa-bullseye"></i>
+              </div>
+            </div>
+            <div class="kpi-val" id="kpi-dice">89.4%</div>
+            <div class="kpi-note">Target: Overlap agreement</div>
+          </div>
+
+          <!-- IoU (Jaccard) -->
+          <div class="kpi-card">
+            <div class="kpi-top">
+              <span class="kpi-label">Mean IoU (Jaccard)</span>
+              <div class="kpi-icon-wrap kpi-icon-blue">
+                <i class="fa-solid fa-shapes"></i>
+              </div>
+            </div>
+            <div class="kpi-val" id="kpi-iou">81.7%</div>
+            <div class="kpi-note">Intersection over Union</div>
+          </div>
+
+          <!-- Precision -->
+          <div class="kpi-card">
+            <div class="kpi-top">
+              <span class="kpi-label">Precision (PPV)</span>
+              <div class="kpi-icon-wrap kpi-icon-teal">
+                <i class="fa-solid fa-crosshairs"></i>
+              </div>
+            </div>
+            <div class="kpi-val" id="kpi-precision">91.2%</div>
+            <div class="kpi-note">Low false positive rate</div>
+          </div>
+
+          <!-- Recall / Sensitivity -->
+          <div class="kpi-card">
+            <div class="kpi-top">
+              <span class="kpi-label">Recall / Sensitivity</span>
+              <div class="kpi-icon-wrap kpi-icon-purple">
+                <i class="fa-solid fa-virus"></i>
+              </div>
+            </div>
+            <div class="kpi-val" id="kpi-recall">88.9%</div>
+            <div class="kpi-note">True lesion detection</div>
+          </div>
+
+          <!-- Total Slices -->
+          <div class="kpi-card">
+            <div class="kpi-top">
+              <span class="kpi-label">Cohort Slices</span>
+              <div class="kpi-icon-wrap kpi-icon-orange">
+                <i class="fa-solid fa-images"></i>
+              </div>
+            </div>
+            <div class="kpi-val" id="kpi-slices">2,200</div>
+            <div class="kpi-note">80% Train | 10% Val | 10% Test</div>
+          </div>
+        </div>
+
+        <!-- Interactive Training Curves (Chart.js) -->
+        <div class="charts-grid">
+          <div class="chart-card">
+            <div class="chart-card-header">
+              <div class="chart-title">
+                <i class="fa-solid fa-chart-area" style="color: #0284c7;"></i>
+                <span>Loss Trajectory (BCE + Dice)</span>
+              </div>
+              <span class="tech-pill">Train vs Val</span>
+            </div>
+            <div class="chart-canvas-wrapper">
+              <canvas id="lossChart"></canvas>
+            </div>
+          </div>
+
+          <div class="chart-card">
+            <div class="chart-card-header">
+              <div class="chart-title">
+                <i class="fa-solid fa-chart-line" style="color: #059669;"></i>
+                <span>Dice Similarity Coefficient (DSC)</span>
+              </div>
+              <span class="tech-pill">Validation Progression</span>
+            </div>
+            <div class="chart-canvas-wrapper">
+              <canvas id="diceChart"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Launch CTA Banner -->
+        <div class="card" style="display: flex; align-items: center; justify-content: space-between; background: linear-gradient(135deg, #0b132b, #1e293b); color: #ffffff;">
+          <div>
+            <h3 style="font-size: 1.25rem; font-weight: 700;">Ready to run liver lesion segmentation?</h3>
+            <p style="color: #94a3b8; font-size: 0.9rem; margin-top: 4px;">Pick a random test slice with ground-truth verification or upload an MRI scan.</p>
+          </div>
+          <button class="btn btn-random" style="width: auto; padding: 12px 24px;" onclick="loadRandomSampleAndPredict()">
+            <i class="fa-solid fa-dice"></i>
+            <span>Pick Random Test Sample & Predict</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- VIEW 2: PREDICT & ANALYZE                  -->
+      <!-- ========================================== -->
+      <section id="view-predict" class="view-section">
+        <div class="section-header">
+          <h1 class="section-title">Segment & Characterize MRI Slices</h1>
+          <p class="section-desc">Run deep UNet semantic segmentation and rule-based tumor characterization.</p>
+        </div>
+
+        <div class="predict-layout">
+          <!-- Control Panel -->
+          <div class="card">
+            <div class="card-title">
+              <i class="fa-solid fa-sliders" style="color: var(--primary);"></i>
+              <span>Input Selection</span>
+            </div>
+            <div class="card-subtitle">Choose a pre-annotated test scan or upload custom DICOM/PNG.</div>
+
+            <!-- Option 1: Random Test Sample -->
+            <button class="btn btn-random" id="btn-random-sample" onclick="fetchRandomSample()">
+              <i class="fa-solid fa-shuffle"></i>
+              <span>Pick Random Test Sample</span>
+            </button>
+
+            <div class="action-divider">
+              <span>Or Upload Custom MRI</span>
+            </div>
+
+            <!-- Option 2: Upload File Dropzone -->
+            <form id="upload-form">
+              <div class="dropzone" id="dropzone-mri" onclick="document.getElementById('file-mri').click()">
+                <i class="fa-solid fa-cloud-arrow-up dropzone-icon"></i>
+                <div class="dropzone-text">Click or Drag & Drop MRI Image</div>
+                <div class="dropzone-sub">PNG, JPG, or DICOM (256x256 auto-rescaled)</div>
+                <div class="file-chosen-tag" id="tag-mri-chosen"></div>
+                <input type="file" id="file-mri" class="file-input-hidden" accept="image/*" onchange="handleImageFileSelected(this, 'mri')">
+              </div>
+
+              <!-- Optional Ground Truth Mask -->
+              <div class="dropzone" id="dropzone-mask" onclick="document.getElementById('file-mask').click()" style="padding: 16px;">
+                <i class="fa-solid fa-mask dropzone-icon" style="font-size: 1.4rem; color: #64748b;"></i>
+                <div class="dropzone-text" style="font-size: 0.82rem;">Optional: Ground Truth Mask</div>
+                <div class="dropzone-sub">For quantitative Dice/IoU calculation</div>
+                <div class="file-chosen-tag" id="tag-mask-chosen"></div>
+                <input type="file" id="file-mask" class="file-input-hidden" accept="image/*" onchange="handleImageFileSelected(this, 'mask')">
+              </div>
+
+              <button type="button" class="btn btn-primary" id="btn-run-segmentation" onclick="executeSegmentation()" style="margin-top: 10px;">
+                <i class="fa-solid fa-bolt"></i>
+                <span>Run AI Segmentation & Diagnosis</span>
+              </button>
+            </form>
+          </div>
+
+          <!-- Staging / Preview Box -->
+          <div class="card preview-panel">
+            <div class="card-title">
+              <i class="fa-solid fa-eye" style="color: var(--secondary);"></i>
+              <span>Inspection Viewport</span>
+            </div>
+            <div class="card-subtitle">Loaded input scan and reference ground truth mask.</div>
+
+            <div class="preview-grid">
+              <div class="preview-box">
+                <span class="preview-tag">Input MRI</span>
+                <img id="preview-mri-img" style="display: none;" alt="Input MRI">
+                <div class="preview-empty-state" id="preview-mri-placeholder">
+                  <i class="fa-regular fa-image"></i>
+                  <span>No MRI loaded yet</span>
+                </div>
+              </div>
+
+              <div class="preview-box">
+                <span class="preview-tag">Ground Truth Mask</span>
+                <img id="preview-mask-img" style="display: none;" alt="Ground Truth">
+                <div class="preview-empty-state" id="preview-mask-placeholder">
+                  <i class="fa-solid fa-draw-polygon"></i>
+                  <span>No mask loaded</span>
+                </div>
+              </div>
+            </div>
+
+            <div id="sample-meta-callout" style="display: none; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: var(--radius-sm); padding: 12px 16px; font-size: 0.85rem; color: #166534;">
+              <i class="fa-solid fa-circle-info" style="margin-right: 6px;"></i>
+              <span id="sample-meta-text">Sample metadata</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- VIEW 3: RESULTS & DIAGNOSIS                -->
+      <!-- ========================================== -->
+      <section id="view-results" class="view-section">
+        <div class="section-header" style="display: flex; align-items: center; justify-content: space-between;">
+          <div>
+            <h1 class="section-title">Diagnostic Segmentation Results</h1>
+            <p class="section-desc">Multi-panel visual analysis, quantitative Dice/IoU metrics, and morphological characterization.</p>
+          </div>
+          <div class="results-actions-bar">
+            <button class="btn btn-secondary" style="width: auto;" onclick="window.print()">
+              <i class="fa-solid fa-print"></i>
+              <span>Print / Export PDF</span>
+            </button>
+            <button class="btn btn-random" style="width: auto;" onclick="loadRandomSampleAndPredict()">
+              <i class="fa-solid fa-shuffle"></i>
+              <span>Next Test Sample</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Big Diagnostic Badge Banner -->
+        <div class="diagnosis-banner" id="diagnosis-banner">
+          <div class="diagnosis-badge-wrap">
+            <div class="diagnosis-icon-circle badge-malignant-circle" id="diag-badge-circle">
+              <i class="fa-solid fa-radiation" id="diag-badge-icon"></i>
+            </div>
+            <div class="diagnosis-info">
+              <h2 id="diag-title" class="badge-malignant-text">Malignant (Cancerous)</h2>
+              <div class="diagnosis-summary" id="diag-summary">
+                Morphological features demonstrate high-risk characteristics suggestive of Hepatocellular Carcinoma (HCC) or Metastatic Neoplasm.
+              </div>
+            </div>
+          </div>
+
+          <div class="confidence-box">
+            <div class="confidence-label">Diagnostic Confidence</div>
+            <div class="confidence-num" id="diag-confidence-num">92.4%</div>
+            <div class="confidence-bar-bg">
+              <div class="confidence-bar-fill confidence-malignant" id="diag-confidence-bar" style="width: 92%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4-Image Quad View Grid (Original, Ground Truth, Predicted, Overlay) -->
+        <div class="quad-images-grid">
+          <!-- 1) Original MRI -->
+          <div class="quad-card">
+            <div class="quad-card-header">
+              <span class="quad-card-title">1) Original MRI</span>
+              <span class="quad-card-tag">256x256 Grayscale</span>
+            </div>
+            <div class="quad-img-viewport">
+              <img id="res-img-orig" src="" alt="Original MRI">
+            </div>
+          </div>
+
+          <!-- 2) Ground Truth Mask -->
+          <div class="quad-card">
+            <div class="quad-card-header">
+              <span class="quad-card-title">2) Ground Truth Mask</span>
+              <span class="quad-card-tag" id="tag-gt-status">Expert Annotation</span>
+            </div>
+            <div class="quad-img-viewport">
+              <img id="res-img-gt" src="" alt="Ground Truth Mask">
+            </div>
+          </div>
+
+          <!-- 3) Predicted Mask -->
+          <div class="quad-card">
+            <div class="quad-card-header">
+              <span class="quad-card-title">3) Predicted Mask</span>
+              <span class="quad-card-tag" style="background: #e0f2fe; color: #0369a1;">UNet Prediction</span>
+            </div>
+            <div class="quad-img-viewport">
+              <img id="res-img-pred" src="" alt="Predicted Mask">
+            </div>
+          </div>
+
+          <!-- 4) Diagnostic Overlay -->
+          <div class="quad-card">
+            <div class="quad-card-header">
+              <span class="quad-card-title">4) Diagnostic Overlay</span>
+              <span class="quad-card-tag" style="background: #f1f5f9; color: #0f172a;">Multi-Channel Blend</span>
+            </div>
+            <div class="quad-img-viewport">
+              <img id="res-img-overlay" src="" alt="Diagnostic Overlay">
+            </div>
+          </div>
+        </div>
+
+        <!-- Diagnostic Overlay Legend -->
+        <div class="overlay-legend">
+          <div class="legend-item">
+            <div class="legend-swatch swatch-tp"></div>
+            <span>True Positive (UNet ∩ Real Lesion)</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-swatch swatch-fp"></div>
+            <span>False Positive (Over-segmentation)</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-swatch swatch-fn"></div>
+            <span>False Negative (Missed Disease)</span>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</div>
+
+<!-- Loading Spinner Overlay -->
+<div class="spinner-overlay" id="loading-spinner">
+  <div class="spinner-pulse"></div>
+  <div class="spinner-text" id="spinner-title">Executing UNet Inference...</div>
+  <div class="spinner-sub" id="spinner-sub">Generating semantic segmentation mask & morphological analysis</div>
+</div>
+
+<!-- Main Application Logic -->
+<script src="/static/js/main.js"></script>
+</body>
+</html>

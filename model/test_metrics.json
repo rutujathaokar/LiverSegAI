@@ -1,0 +1,13 @@
+{
+  "test_slices_count": 220,
+  "mean_dice": 0.9745,
+  "mean_iou": 0.9515,
+  "mean_precision": 0.9744,
+  "mean_recall": 0.9761,
+  "mean_specificity": 0.9997,
+  "mean_accuracy": 0.9995,
+  "std_dice": 0.0287,
+  "std_iou": 0.0484,
+  "best_checkpoint_dice": 0.9785,
+  "best_epoch": 27
+}
