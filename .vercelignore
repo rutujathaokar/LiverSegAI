@@ -3,13 +3,17 @@
 .github
 *.pyc
 __pycache__
+__pycache__/**
 .venv
 venv
 
 # Exclude heavy training datasets (not needed by live inference server)
-data/raw
-data/processed/train
-data/processed/val
+data/raw/
+data/raw/**
+data/processed/train/
+data/processed/train/**
+data/processed/val/
+data/processed/val/**
 
 # Exclude offline training and evaluation scripts
 train.py
@@ -18,5 +22,6 @@ evaluate.py
 export_pickle.py
 requirements-dev.txt
 
-# Exclude duplicate models (best_model.pkl is used)
+# Exclude duplicate models & large preview images
 model/final_model.pth
+model/test_predictions_sample.png

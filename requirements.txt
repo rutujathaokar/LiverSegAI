@@ -1,9 +1,8 @@
-# Production dependencies for Vercel Serverless Deployment
-# Lightweight CPU PyTorch (< 200MB instead of 5+ GB CUDA binaries)
+# Lightweight CPU PyTorch for Vercel Serverless Functions
 --extra-index-url https://download.pytorch.org/whl/cpu
-torch>=2.2.0
+torch==2.5.1+cpu
 numpy>=1.24.0,<2.0.0
-opencv-python-headless>=4.8.0
+opencv-python-headless>=4.8.0,<4.12.0
 pillow>=10.0.0
 flask>=3.0.0
 flask-cors>=4.0.0
